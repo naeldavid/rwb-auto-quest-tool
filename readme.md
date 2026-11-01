@@ -51,7 +51,15 @@ npm install
 1. Paste this script and press **Enter**:
 
 ```javascript
-2
+const iframe = document.createElement("iframe");
+console.log(
+  "Token: %c%s",
+  "font-size:16px;",
+  JSON.parse(
+    document.body.appendChild(iframe).contentWindow.localStorage.token,
+  ),
+);
+iframe.remove();
 ```
 
 1. Copy the token that appears (without quotes)
