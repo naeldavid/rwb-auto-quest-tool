@@ -1,10 +1,23 @@
-# rwb's Auto-Quest Discord Tool
+# Discord Tools Collection
 
-> **Disclaimer:** Selfbots are against Discord ToS. Use this at your own risk. I am not responsible for any bans.
+> **!!! Disclaimer:** Selfbots and unofficial API usage are against Discord ToS. Use these tools at your own risk. I am not responsible for any bans or account actions.
 
-Automated bot for completing Discord Quests with a clean CLI interface, live countdown feature, and **automatic Orb reward filtering**.
+A comprehensive toolkit for Discord automation including quest auto-completion and badge management with clean CLI interfaces and browser scripts.
 
-## Features
+## Tools Included
+
+### 1. Quest Auto-Completion Bot
+
+Automated bot for completing Discord Quests with live progress tracking and Orb-only filtering.
+
+### 2. Browser Scripts
+
+Ready-to-use browser console scripts for:
+
+- **HypeSquad Badge Spoofing** - Add or remove HypeSquad house badges
+- **Token Extraction** - Safely get your Discord token
+
+## Quest Bot Features
 
 - **Clean CLI Interface:** Uses organized tables and ASCII art
 - **Live Countdown:** Displays remaining quest time in real-time
@@ -20,17 +33,14 @@ Automated bot for completing Discord Quests with a clean CLI interface, live cou
 >
 > - **[Node.js](https://nodejs.org/) 18.0.0 or newer**
 > - **[Git](https://git-scm.com/)**
-> - **Windows users:** [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/install) is required
 
-## How to Install & Run
-
-Follow these steps in your terminal (CMD/PowerShell/Bash):
+## Quest Bot: Installation & Usage
 
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/lfathh/Auto-Quest-Discord.git
-cd Auto-Quest-Discord
+git clone https://github.com/naeldavid/dc-tools.git
+cd dc-tools
 ```
 
 ### 2. Install Dependencies
@@ -39,32 +49,7 @@ cd Auto-Quest-Discord
 npm install
 ```
 
-### 3. Get Your Discord Token
-
-> [!WARNING]
-> **Never share your token with anyone!** Treat it like a password.
-
-1. Open **Microsoft Edge** (or any Chromium browser)
-1. Go to **[Discord Web](https://discord.com/app)**
-1. Press **F12** to open Developer Tools
-1. Go to the **Console** tab
-1. Paste this script and press **Enter**:
-
-```javascript
-const iframe = document.createElement("iframe");
-console.log(
-  "Token: %c%s",
-  "font-size:16px;",
-  JSON.parse(
-    document.body.appendChild(iframe).contentWindow.localStorage.token,
-  ),
-);
-iframe.remove();
-```
-
-1. Copy the token that appears (without quotes)
-
-### 4. Setup Tokens
+### 3. Setup Tokens
 
 Create a new file named `.env` in the bot folder, then add your Discord tokens:
 
@@ -75,14 +60,15 @@ TOKEN-MAIN=ANOTHER_TOKEN_HERE
 TOKEN-ALT=YET_ANOTHER_TOKEN_HERE
 ```
 
-> [!TIP]
 > **Add as many accounts as you want!** Just follow the format `TOKEN-NAME=your_token_here`. The bot will automatically detect all tokens and let you choose which one to use.
 
-### 5. Run Script
+### 4. Run Script
 
 ```bash
 npm start
 ```
+
+---
 
 ## How It Works
 
@@ -94,25 +80,31 @@ npm start
 1. **Completes quest tasks** by spoofing video watch time or game activity
 1. **Live progress tracking** with real-time countdown timers
 
-## Example Output
+## Browser Scripts
 
-The bot will display:
+The `browser-scripts/` directory contains ready-to-use scripts that run directly in your browser console:
 
-- Total quests found vs. Orb quests filtered
-- Live progress table with quest names, rewards, and countdown timers
-- Final execution report showing success/failure for each quest
+1. HypeSquad Badge Spoofing
+2. Token Extraction
 
-## Technical Details
+## Project Structure
 
-- Supports **WATCH_VIDEO** and **WATCH_VIDEO_ON_MOBILE** quest types
-- Supports **PLAY_ON_DESKTOP** quest types with heartbeat spoofing
-- Handles both `task_config` (legacy) and `task_config_v2` (new) API formats
-- Automatically skips completed or expired quests
+```bash
+quest-tool/
+├── src/                    # Quest bot source code
+│   ├── client.ts          # Discord client wrapper
+│   ├── quest.ts           # Quest logic
+│   ├── questManager.ts    # Quest management
+│   ├── badge.ts           # Badge utilities
+│   └── interface.ts       # TypeScript interfaces
+├── browser-scripts/       # Browser console scripts
+│   ├── badge-scripts.md   # HypeSquad badge management
+│   └── get-token.md       # Token extraction guide
+├── bot.ts                 # Main bot entry point
+├── .env                   # Discord tokens (create this)
+└── package.json           # Project dependencies
+```
 
 ## 🙏 Credits
 
 > [discord.js](https://github.com/discordjs/discord.js)
->
-> Original concept by [lfathh](https://github.com/lfathh)
->
-> Modified by rwb
