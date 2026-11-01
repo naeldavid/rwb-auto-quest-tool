@@ -1,4 +1,4 @@
-# Discord Tools Collection
+# My Discord Tools
 
 > **!!! Disclaimer:** Selfbots and unofficial API usage are against Discord ToS. Use these tools at your own risk. I am not responsible for any bans or account actions.
 
